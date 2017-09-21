@@ -78,6 +78,13 @@ DamageSpell.prototype.constructor = DamageSpell;
  * @method  invoke
  */
 
+function Spellcaster(name, health, mana){
+  this.name = name;
+  this.health = health;
+  this.mana = mana;
+  this.isAlive = true;
+}
+
   /**
    * @method inflictDamage
    *
@@ -88,6 +95,15 @@ DamageSpell.prototype.constructor = DamageSpell;
    *
    * @param  {number} damage  Amount of damage to deal to the spellcaster
    */
+Spellcaster.prototype.inflictDamage = function(damage){
+  if(this.health <= damage){
+    this.health = 0;
+    this.isAlive = false;
+  }else{
+    this.health -= damage;
+  }
+
+}
 
   /**
    * @method spendMana
